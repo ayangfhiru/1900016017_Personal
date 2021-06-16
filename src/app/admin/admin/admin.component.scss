@@ -1,0 +1,67 @@
+.example-container {
+    position: absolute;
+    top: 60px;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+}
+    
+.example-sidenav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+}
+  
+.sidenav-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+}
+
+.list-group a{
+    padding-top: 20px;
+}
+
+.sidenav{
+    margin-top: 40px;
+}
+.sidenav:hover{
+    background-color: #a3a3a3;
+}
+
+
+.alert{
+    margin-top: 13px;
+}
+  
+.txt-sidenav{
+    margin-left: 7px;
+}
+  
+.pilihan{
+    width: 100%;
+    margin-bottom: 8px;
+}
+  
+.pilihan:hover{
+    height: 100%;
+    width: 100%;
+    background-color: #999999;
+}
+  
+.avatar{
+    margin: 17px 5px 30px 5px;
+}
+.avatar img{
+    height: 65px;
+    width: 65px;
+}
+
+.name-admin{
+    margin-right: 5px;
+    padding-left: 20px;
+    text-align: start;
+    font-size: 17px;
+}

@@ -1,0 +1,29 @@
+.card-content{
+    width: 237px;
+    float: left;
+}
+
+.card-link :hover{
+    background-color: #e9e9e9;
+}
+
+.content{
+    margin-top: -50px;
+}
+
+.shopping-cart{
+    padding: 10px 0 0 7px;
+}
+
+.shopping-cart:hover{
+    background-color: #e9e9e9;
+    width: 35px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 575px){
+    .content{
+        margin-top: -15px;
+    }
+}

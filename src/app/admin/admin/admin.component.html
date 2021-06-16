@@ -1,0 +1,54 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        
+        <button mat-icon-button class="example-icon" (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <a class="navbar-brand uk-position-left mt-3" style="margin-left: 70px;" routerLink="/admin">Navbar</a>
+    </nav>
+
+    <mat-sidenav-container class="example-container">
+      
+        <mat-sidenav #sidenav mode="side" [position]="'start'" class="sidenav-left"
+        [fixedInViewport]="true" [fixedTopGap]="60"
+        [fixedBottomGap]="0">
+          <div class="avatar">
+            <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" class="rounded-circle float-left" alt="...">
+            <p class="name-admin text-center text-uppercase text-monospace pt-4">Mr. Petruk</p>
+          </div>
+          <mat-divider></mat-divider>
+
+          <!-- list_1 -->
+          <div class="list-group" *ngFor="let list1 of list;">
+            <a routerLink="/{{list1['link']}}" class="mt-2 list-group-item-action text-decoration-none">
+              <mat-icon class="ml-3 mb-2">settings</mat-icon>
+              <p class="text-monospace uk-text-middle uk-text-emphasis uk-text-bold ml-5" style="margin-top: -30px;">{{list1['title']}}</p>
+            </a>
+          </div>
+          <mat-divider class="mt-2"></mat-divider>
+
+          <div class="list-group">
+            <a routerLink="" class="mt-2 list-group-item-action text-decoration-none">
+              <mat-icon class="ml-3 mb-2">settings</mat-icon>
+              <p class="text-monospace uk-text-middle uk-text-emphasis uk-text-bold ml-5" style="margin-top: -30px;">Pengaturan</p>
+            </a>
+          </div>
+
+        </mat-sidenav>
+      
+      <mat-sidenav #sidenav mode="side" [position]="'end'"  class="example-sidenav"
+      [fixedInViewport]="true" [fixedTopGap]="60"
+      [fixedBottomGap]="0">
+      </mat-sidenav>
+      <!-- sidenav content -->
+      <mat-sidenav-content style="padding: 20px; background-color: #bfbfbf;">
+      <!--halaman-halaman tampil disini-->
+      
+      <router-outlet></router-outlet>
+        
+      </mat-sidenav-content>
+      <!--end sidenav content-->
+      </mat-sidenav-container> 
+    
+</div>

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "plantshop-2dc5b": {
+      "hosting": {
+        "app": [
+          "plantshop-2dc5b"
+        ]
+      }
+    }
+  }
+}

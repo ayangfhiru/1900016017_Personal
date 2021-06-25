@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public firestore: AngularFirestore
+  ) { }
 
+  // home: any;
+  jmlProduk: number = 0;
   ngOnInit(): void {
+    this.firestore.collection("plants").get().subscribe(res=>{
+      this.jmlProduk = res.docs.length
+      // console.log(this.jmlProduk)
+      this.home();
+    });
   }
-  home = [
-    {header:'Produk', title:'Jumlah produk yang dijual'},
-    {header:'Penjualan', title:'Total penjualan'},
-    {header:'Produk', title:'Jumlah produk yang dijual'}
-  ]
+
+  homee:any;
+  home(){
+    this.homee = [
+      {header:'Produk', title:'Jumlah produk yang dijual', cardText:this.jmlProduk},
+      {header:'Penjualan', title:'Total penjualan', cardText:'Ow'}
+    ]
+  }
+  
 }

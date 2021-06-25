@@ -1,6 +1,13 @@
+<div *ngIf="alert" class="alert alert-warning alert-dismissible fade show" role="alert">
+  <p class="text-center">{{messageAlert}}</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title>Daftar Produk</mat-card-title>
+      <a routerLink="../add_data" type="button" class="btn btn-primary uk-position-top-right mr-3 mt-2">Tambah Data</a>
     </mat-card-header>
     <mat-card-content>
       
@@ -8,23 +15,26 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Jenis</th>
+                <th scope="col">Tinggi</th>
+                <th scope="col">Harga</th>
+                <th scope="col">Jumlah</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
+              <tr *ngFor="let plant of plants; index as row">
+                <th scope="row">{{row + 1}}</th>
+                <td>{{plant.name}}</td>
+                <td>{{plant.species}}</td>
+                <td>{{plant.height}}</td>
+                <td>{{plant.price | currency:"Rp "}}</td>
+                <td>{{plant.total}}</td>
+                <td>
+                  <a class="uk-icon-link uk-margin-small-right" (click)="editPlants(plant, plant.id)" title="Edit" uk-icon="file-edit"></a>
+                  <a class="uk-icon-link uk-margin-small-right" (click)="hapusPlants(plant.id)" title="Hapus" uk-icon="trash"></a>
+                </td>
               </tr>
             </tbody>
         </table>

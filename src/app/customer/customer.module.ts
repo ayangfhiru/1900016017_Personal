@@ -5,6 +5,8 @@ import { ProdukComponent } from './produk/produk.component';
 import { materialModule } from 'src/style/material/material';
 import { CustomerComponent } from './customer/customer.component';
 import { JenisTanamanComponent } from './jenis-tanaman/jenis-tanaman.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 
 const routes : Routes = [
   {
@@ -31,6 +33,7 @@ const routes : Routes = [
   ],
   imports: [
     RouterModule.forChild(routes),
+    AngularFireModule.initializeApp(environment.firebase),
     CommonModule,
     materialModule
   ]

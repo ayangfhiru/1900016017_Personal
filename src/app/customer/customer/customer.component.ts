@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import {} from 'src/style/scripts/'
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { ApiService } from 'src/app/service/api.service';
 
 
 @Component({
@@ -9,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public api: ApiService,
+    public auth: AngularFireAuth,
+    public firestore: AngularFirestore
+  ) { }
 
+  userData: any = {};
   ngOnInit(): void {
+    this.auth.authState.subscribe((res:any)=>{
+      this.firestore.collection("userData").doc(res.email).valueChanges().subscribe(result=>{
+        this.userData = result;
+      })
+    })
+  }
+
+  logOut(){
+    this.api.signOut();
   }
 
 }

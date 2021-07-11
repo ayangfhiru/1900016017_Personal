@@ -29,6 +29,7 @@ export class EditDataComponent implements OnInit {
   loading: boolean = true;
   editPlants(){
     // console.log("Edit data " + this.dataPlants)
+    this.loading = false;
     this.firestore.collection('plants').doc(this.dataPlants.id).update(this.dataPlants).then(res=>{
       this.loading = false
       this.dialogRef.close(res);

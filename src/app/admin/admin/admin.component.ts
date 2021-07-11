@@ -30,7 +30,7 @@ export class AdminComponent implements OnInit {
   }
 
   list = [
-    {link:"admin", title:"Home"},
-    {link:"admin/produk", title:"Produk"}
+    {link:"admin", title:"Home", icon:"space_dashboard"},
+    {link:"admin/produk", title:"Produk", icon:"description"}
   ]
 }

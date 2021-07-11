@@ -7,6 +7,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { JenisTanamanComponent } from './jenis-tanaman/jenis-tanaman.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { DetailProdukComponent } from './detail-produk/detail-produk.component';
 
 const routes : Routes = [
   {
@@ -20,6 +21,10 @@ const routes : Routes = [
       {
         path:'jenis',
         component: JenisTanamanComponent
+      },
+      {
+        path:'detail-produk',
+        component: DetailProdukComponent
       }
     ]
   },
@@ -29,7 +34,8 @@ const routes : Routes = [
   declarations: [
     ProdukComponent,
     CustomerComponent,
-    JenisTanamanComponent
+    JenisTanamanComponent,
+    DetailProdukComponent
   ],
   imports: [
     RouterModule.forChild(routes),

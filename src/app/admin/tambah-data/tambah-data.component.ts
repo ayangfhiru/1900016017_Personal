@@ -38,5 +38,7 @@ export class TambahDataComponent implements OnInit {
     })
   }
 
-
+  cancel(){
+    this.api.router.navigate(['admin/produk']);
+  }
 }

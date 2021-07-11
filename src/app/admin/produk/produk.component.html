@@ -7,7 +7,9 @@
 <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title>Daftar Produk</mat-card-title>
-      <a routerLink="../add_data" type="button" class="btn btn-primary uk-position-top-right mr-3 mt-2">Tambah Data</a>
+      <a routerLink="../add_data" type="button" class="btn btn-primary uk-position-top-right mr-3 mt-1" style="height: 40px;">
+        <mat-icon>post_add</mat-icon><p class="float-right mt-1">Tambah Data</p>
+      </a>
     </mat-card-header>
     <mat-card-content>
       
@@ -27,7 +29,7 @@
               <tr *ngFor="let plant of plants; index as row">
                 <th scope="row">{{row + 1}}</th>
                 <td>{{plant.name}}</td>
-                <td>{{plant.species}}</td>
+                <td>{{plant.jenis}}</td>
                 <td>{{plant.height}}</td>
                 <td>{{plant.price | currency:"Rp "}}</td>
                 <td>{{plant.total}}</td>

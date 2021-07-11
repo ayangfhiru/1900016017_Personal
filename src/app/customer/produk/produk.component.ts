@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
+import { DetailProdukComponent } from '../detail-produk/detail-produk.component';
 
 
 @Component({
@@ -16,7 +18,8 @@ export class ProdukComponent implements OnInit {
   constructor(
     public router: Router,
     public api:ApiService,
-    public firestore: AngularFirestore
+    public firestore: AngularFirestore,
+    public dialog: MatDialog
   ) { }
 
   
@@ -43,8 +46,11 @@ export class ProdukComponent implements OnInit {
     })
   }
 
-  cekdata(){
-    
+  cekdata(id:any, data:any){
+    // this.api.sendIdPlants(data);
+    // this.router.navigate(['detail-produk'])
+    console.log(data);
+    // this.dialog.
   }
 
   kirimJenis(data:any){

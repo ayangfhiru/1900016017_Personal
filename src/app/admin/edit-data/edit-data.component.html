@@ -46,7 +46,9 @@
             </div>
 
             <div class="float-right">
-                <button (click)="editPlants()" class="btn btn-success float-right mr-5" [disabled]="!loading">{{loading ? 'Edit':'Tunggu...'}}</button>
+                <button (click)="editPlants()" class="btn btn-success float-right mr-5" [disabled]="!loading">
+                    <mat-icon class="mt-1">{{loading ? 'save':'published_with_changes'}}</mat-icon>
+                </button>
             </div>
 
         </form>

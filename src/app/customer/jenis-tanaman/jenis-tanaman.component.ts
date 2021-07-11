@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { ApiService } from 'src/app/service/api.service';
 
 
@@ -9,14 +10,17 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class JenisTanamanComponent implements OnInit {
   getJenis:any;
+  plant : any  = {};
   @Input() jenis: any;
 
   constructor(
-    public api:ApiService
+    public api:ApiService,
+    public firestore: AngularFirestore
   ) { }
   
   ngOnInit(): void {
     this.getJenis = this.api.getJenis();
+    // this.firestore.collection('plant').
+    // console.log(this.plant)
   }
-   
 }

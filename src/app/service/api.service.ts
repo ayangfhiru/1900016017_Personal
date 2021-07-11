@@ -14,17 +14,29 @@ export class ApiService {
     public firestore: AngularFirestore
   ) { }
 
-  message:any;
+  plants:any;
   sendJenis(jns:any){
-    this.message = jns;
+    //produk component
+    this.plants = jns;
   }
   getJenis(){
-    return this.message;
+    //jenis-tanaman komponent
+    return this.plants;
+  }
+  
+  getDataPlants(){
+    //produk component
+    return this.firestore.collection('plants').valueChanges({idField : 'id'});
   }
 
-  // All  
-  getDataPlants(){
-    return this.firestore.collection('plants').valueChanges({idField : 'id'});
+  idPlants:any;
+  sendIdPlants(id:any){
+    //produk komponent
+    this.idPlants = id;
+  }
+  getIdPlants(){
+    //detail-produk komponent
+    return this.idPlants;
   }
 
   signOut(){

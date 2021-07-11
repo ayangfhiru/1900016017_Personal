@@ -5,7 +5,7 @@
             <mat-icon>menu</mat-icon>
         </button>
 
-        <a class="navbar-brand uk-position-left mt-3" style="margin-left: 70px;" routerLink="/admin">Navbar</a>
+        <a class="navbar-brand uk-position-left mt-3" style="margin-left: 70px;" routerLink="/admin">Plants Shop</a>
         <a class="uk-position-top-right mr-4 my-3" uk-icon="icon: sign-out;" (click)="logOut()" uk-tooltip="Sign out"></a>   
     </nav>
 
@@ -21,10 +21,10 @@
           <mat-divider></mat-divider>
 
           <!-- list_1 -->
-          <div class="list-group" *ngFor="let list1 of list;">
-            <a routerLink="/{{list1['link']}}" class="mt-2 list-group-item-action text-decoration-none">
-              <mat-icon class="ml-3 mb-2">settings</mat-icon>
-              <p class="text-monospace uk-text-middle uk-text-emphasis uk-text-bold ml-5" style="margin-top: -30px;">{{list1['title']}}</p>
+          <div class="list-group" *ngFor="let lst of list;">
+            <a routerLink="/{{lst['link']}}" class="mt-2 list-group-item-action text-decoration-none">
+              <mat-icon class="ml-3 mb-2">{{lst['icon']}}</mat-icon>
+              <p class="text-monospace uk-text-middle uk-text-emphasis uk-text-bold ml-5" style="margin-top: -30px;">{{lst['title']}}</p>
             </a>
           </div>
           <mat-divider class="mt-2"></mat-divider>

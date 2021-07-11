@@ -42,7 +42,7 @@ export class ProdukComponent implements OnInit {
   }
 
   editPlants(plants:any, id:any){
-    console.log(id)
+    // console.log(id)
     plants['id'] = id
     const dialogRef = this.dialog.open(EditDataComponent,{
       width: '550px',

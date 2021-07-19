@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { TambahDataComponent } from './tambah-data/tambah-data.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditDataComponent } from './edit-data/edit-data.component';
 
 const routes : Routes = [
@@ -47,6 +47,7 @@ const routes : Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     materialModule
   ]
 })

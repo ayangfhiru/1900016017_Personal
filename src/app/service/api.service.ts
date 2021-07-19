@@ -40,7 +40,7 @@ export class ApiService {
   }
 
   signOut(){
-    return this.auth.signOut().then(res=>{
+    return this.auth.signOut().then(res =>{
       this.router.navigate(['login']);
     })
   }

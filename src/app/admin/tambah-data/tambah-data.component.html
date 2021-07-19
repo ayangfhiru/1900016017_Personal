@@ -3,50 +3,53 @@
         <h2 class="font-weight-bold text-monospace">Tambah Data</h2>
     </div>
     <div class="mt-4">
-        <form class="uk-form-horizontal uk-margin-small">
+        <form [formGroup]="formAddData" (ngSubmit)="addData()" novalidate class="uk-form-horizontal uk-margin-small">
 
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-horizontal-text"><p style="margin-left: 50px;">Nama tanaman</p></label>
                 <div class="uk-form-controls" style="margin-right: 50px;">
-                    <input class="uk-input" [(ngModel)]="dataplants.name" name="name" type="text" autocomplete="off">
+                    <input class="uk-input" formControlName="name" type="text" autocomplete="off" required>
                 </div>
             </div>
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-horizontal-text"><p style="margin-left: 50px;">Harga</p></label>
                 <div class="uk-form-controls" style="margin-right: 50px;">
-                    <input class="uk-input" [(ngModel)]="dataplants.price" name="price" type="number" min="0" autocomplete="off">
+                    <input class="uk-input" formControlName="price" type="number" min="0" autocomplete="off">
                 </div>
             </div>
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-horizontal-text"><p style="margin-left: 50px;">Tinggi</p></label>
                 <div class="uk-form-controls" style="margin-right: 50px;">
-                    <input class="uk-input" [(ngModel)]="dataplants.height" name="height" type="number" min="0" autocomplete="off">
+                    <input class="uk-input" formControlName="height" type="number" min="0" autocomplete="off">
                 </div>
             </div>
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-horizontal-text"><p style="margin-left: 50px;">Jenis</p></label>
                 <div class="uk-form-controls" style="margin-right: 50px;">
-                    <input class="uk-input" [(ngModel)]="dataplants.jenis" name="jenis" type="text" autocomplete="off">
+                    <input class="uk-input" formControlName="jenis" type="text" autocomplete="off">
                 </div>
             </div>
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-horizontal-text"><p style="margin-left: 50px;">Jumlah</p></label>
                 <div class="uk-form-controls" style="margin-right: 50px;">
-                    <input class="uk-input" [(ngModel)]="dataplants.total" name="total" type="number" min="0" autocomplete="off">
+                    <input class="uk-input" formControlName="total" type="number" min="0" autocomplete="off">
                 </div>
             </div>
-        
-            <!-- <div class="uk-margin" uk-margin>
-                <label class="uk-form-label" for="form-horizontal-text" style="margin-left: 15px;"></label>
-                <div uk-form-custom="target: true">
-                    <input type="file">
-                    <input class="uk-input uk-form-width-medium" type="text" placeholder="Select file" disabled>
+
+            <div class="uk-margin" uk-margin>
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" id="file" (change)="onFileChange($event)" role="button" class="custom-file-input" [disabled]="!formImg">
+                        <label class="custom-file-label" for="customFile">{{selectedFile ? selectedFile.name : 'Pilih File'}}</label>
+                    </div>
+                    <div class="input-group-append">
+                        <button type="button" (click)="uploadImg()" class="btn btn-primary ml-1" [disabled]="uploadBerhasil">Upload</button>
+                    </div>
                 </div>
-                <button class="btn btn-primary ml-2">Submit</button>
-            </div> -->
+            </div>
             
             <div class="float-right">
-                <button class="btn btn-success float-right mr-5" style="height: 40px;" (click)="addData()" [disabled]="!loading">
+                <button type="submit" class="btn btn-success float-right mr-5" style="height: 40px;" [disabled]="!loading" [disabled]="!uploadBerhasil">
                     <mat-icon>add</mat-icon><p class="float-right">{{loading ? 'Tambah':'Tunggu...'}}</p>
                 </button>
                 <button class="btn btn-danger float-right mr-5" style="height: 40px; width: 100px;" (click)="cancel()" [disabled]="!loading">

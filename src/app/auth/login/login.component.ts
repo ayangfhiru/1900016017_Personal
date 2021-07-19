@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
           return ref.where('email','==', this.user.email)
         }).valueChanges().subscribe(result => {
           this.userdata = result
-          console.log(this.userdata[0].kondisi)
+          // console.log(this.userdata[0].kondisi)
           if (this.userdata[0].kondisi == "1" ) {
             this.loading = true;
             this.router.navigate(['/admin']);
@@ -53,11 +53,12 @@ export class LoginComponent implements OnInit {
         })
       }
       else{
-        console.log("errr")
+        // console.log("errr")
       }
     }).catch(error=>{
       this.info = false;
-      this.message = "Email atau Password salah"
+      this.loading = false;
+      this.message = "Email atau Password salah";
     });
   }
 

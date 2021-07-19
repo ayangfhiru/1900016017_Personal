@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   home(){
     this.homee = [
       {header:'Produk', title:'Jumlah produk yang dijual', cardText:this.jmlProduk},
-      {header:'Penjualan', title:'Total penjualan', cardText:'Ow'}
+      {header:'Penjualan', title:'Total penjualan', cardText:'0'}
     ]
   }
   

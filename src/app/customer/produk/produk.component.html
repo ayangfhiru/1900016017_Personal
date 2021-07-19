@@ -19,16 +19,18 @@
 
 <div class="mt-2 mr-2 card-content" uk-grid *ngFor="let plant of plants;">
     <div>
-        <a (click)="cekdata(plant.id, plant)">
-        <div class="uk-card uk-card-default uk-card-small" style="height: 300px;">
+        <div class="uk-card uk-card-default uk-card-small" style="height: 300px; width: 200px;">
             <div class="uk-card-media-top img-produk">
-                <img src="https://firebasestorage.googleapis.com/v0/b/plantshop-2dc5b.appspot.com/o/plantsImg%2FScreenshot%20from%202021-06-12%2022-27-51.png?alt=media&token=297fa7c0-2ec4-41d3-a15f-6067a5f38891" alt="">
+                <img src="{{plant.urlImg}}" alt="images">
             </div>
-            <div class="uk-card-body">
-                <h3 class="uk-card-title">{{plant.name}}</h3>
-                <p>{{plant.price | currency:"Rp "}}</p>
+            <div class="uk-card-body plant-info">
+                <h3 class="uk-card-title font-weight-bold text-capitalize">{{plant.name}}</h3>
+                <p class="float-right">{{plant.price | currency:"Rp "}}</p>
             </div>
         </div>
-    </a>
+        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+            <button type="button" (click)="cekdata(plant.id, plant)" class="btn btn-info" style="width: 100px;">Info</button>
+            <button type="button" class="btn btn-success" style="width: 100px;">Keranjang</button>
+        </div>
     </div>
 </div>

@@ -13,13 +13,16 @@ export class AdminComponent implements OnInit {
   constructor(
     public api: ApiService,
     public auth: AngularFireAuth,
-    public firetore: AngularFirestore
+    public firestore: AngularFirestore
   ) { }
 
   userData: any = {};
   ngOnInit(): void {
     this.auth.authState.subscribe((res:any)=>{
-      this.firetore.collection('userData').doc(res.email).valueChanges().subscribe(result=>{
+      if(res == null){
+        window.location.replace('/');
+      }
+      this.firestore.collection("userData").doc(res.email).valueChanges().subscribe(result=>{
         this.userData = result;
       })
     })

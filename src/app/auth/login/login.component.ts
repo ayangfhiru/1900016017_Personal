@@ -20,10 +20,15 @@ export class LoginComponent implements OnInit {
   ) { }
   
   //Firestore
-  datauser:any = [];
   ngOnInit(): void {
-    this.auth.authState.subscribe(res=>{
-      this.datauser = res
+    this.auth.onAuthStateChanged((user)=>{
+      if(user){
+        var uid = user.uid;
+        localStorage.setItem("TokenPlant", uid);
+      }
+      else{
+        
+      }
     })
   }
 
@@ -35,7 +40,9 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.info = true;
     this.auth.signInWithEmailAndPassword(this.user.email, this.user.password).then(result=>{
+      console.log(this.auth.currentUser)
       this.loading = true;
+
       if (result) {
         this.firestore.collection('userData', ref=> {
           return ref.where('email','==', this.user.email)

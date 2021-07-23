@@ -2,7 +2,7 @@
 <nav class="navbar navbar-light sticky-top shadow-sm bg-light" id="myNav">
     <ul class="nav ">
         <li class="nav-item mr-3">
-          <a class="nav-link active" routerLink="#">Logo</a>
+          <a class="nav-link active" routerLink="/customer">Logo</a>
         </li>
 
         <form class="form-inline">
@@ -18,7 +18,7 @@
     </ul>
     <ul class="nav justify-content-end">
         <li class="nav-item mr-3" style="margin-top: -20px;">
-            <a href="" class="icon-user mr-4" uk-icon="icon: user"><p class="float-left mt-2 mr-2">{{userData.name}}</p></a>
+            <a class="icon-user mr-4" uk-icon="icon: user"><p class="float-left mt-2 mr-2">{{userData.name}}</p></a>
             <a uk-icon="icon: sign-out;" (click)="logOut()" uk-tooltip="Sign out"></a>
         </li>
     </ul>

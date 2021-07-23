@@ -29,18 +29,18 @@ export class ApiService {
     return this.firestore.collection('plants').valueChanges({idField : 'id'});
   }
 
-  idPlants:any;
-  sendIdPlants(id:any){
-    //produk komponent
-    this.idPlants = id;
+  IdPlants:any;
+  sendPlants(plant:any){
+    this.IdPlants = plant;
+    console.log("API",this.IdPlants)
   }
-  getIdPlants(){
-    //detail-produk komponent
-    return this.idPlants;
+  getPlants(){
+    return this.IdPlants;
   }
 
   signOut(){
     return this.auth.signOut().then(res =>{
+      localStorage.removeItem("TokenPlant");
       this.router.navigate(['login']);
     })
   }

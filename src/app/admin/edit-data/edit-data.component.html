@@ -1,6 +1,7 @@
-<div class="jumbotron container shadow" style="height: 500px; margin: 10px 0 0 -20px; width: 540px;">
+<div style="height: 500px; width: 540px; margin: 10px 0 0 -20px;">
     <div style="margin-top: -35px;">
-        <h2 class="font-weight-bold text-monospace">Edit Data</h2>
+        <h2 class="font-weight-bold text-monospace mt-5 ml-3">Edit Data</h2>
+        <p>Batal</p>
     </div>
     <div class="mt-4">
         <form class="uk-form-horizontal uk-margin-small">
@@ -26,7 +27,7 @@
             <div class="uk-margin">
                 <label class="uk-form-label" for="form-horizontal-text"><p style="margin-left: 50px;">Jenis</p></label>
                 <div class="uk-form-controls" style="margin-right: 50px;">
-                    <input class="uk-input" [(ngModel)]="dataPlants.species" name="species" type="text" autocomplete="off">
+                    <input class="uk-input" [(ngModel)]="dataPlants.jenis" name="species" type="text" autocomplete="off" disabled>
                 </div>
             </div>
             <div class="uk-margin">
@@ -37,16 +38,18 @@
             </div>
         
             <div class="uk-margin" uk-margin>
-                <label class="uk-form-label" for="form-horizontal-text" style="margin-left: 15px;"></label>
-                <div uk-form-custom="target: true">
-                    <input type="file">
-                    <input class="uk-input uk-form-width-medium" type="text" placeholder="Select file" disabled>
+                <label></label>
+                <div class="custom-file">
+                    <input type="file" id="file" (change)="onFileChange($event)" role="button" class="custom-file-input" [disabled]="!formImg">
+                    <label class="custom-file-label label-file" for="customFile">{{selectedFile ? selectedFile.name : 'Pilih File'}}</label>
                 </div>
-                <!-- <button class="btn btn-primary ml-2">Submit</button> -->
+                <div class="input-group-append btn-upload-img">
+                    <button type="button" (click)="uploadImg()" class="btn btn-primary" [disabled]="uploadBerhasil">Upload</button>
+                </div>
             </div>
 
             <div class="float-right">
-                <button (click)="editPlants()" class="btn btn-success float-right mr-5" [disabled]="!loading">
+                <button (click)="editPlants()" class="btn btn-success mt-5 mr-5" [disabled]="!loading">
                     <mat-icon class="mt-1">{{loading ? 'save':'published_with_changes'}}</mat-icon>
                 </button>
             </div>

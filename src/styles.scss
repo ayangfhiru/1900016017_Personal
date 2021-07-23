@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -20,13 +19,15 @@ $app-warn: mat-palette($mat-red);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$app-theme: mat-light-theme((
-  color: (
-    primary: $app-primary,
-    accent: $app-accent,
-    warn: $app-warn,
+$app-theme: mat-light-theme(
+  (
+    color: (
+      primary: $app-primary,
+      accent: $app-accent,
+      warn: $app-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -34,8 +35,14 @@ $app-theme: mat-light-theme((
 @include angular-material-theme($app-theme);
 
 /* You can add global styles to this file, and also import other style files */
-@import url("./style/Bootstrap5.0/bootstrap.css");
 @import url("./style/Bootstrap4.6/bootstrap.css");
 @import url("./style/Uikit/uikit.css");
-html, body { height: 200%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #80808080; }
+html,
+body {
+  height: 200%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #80808080;
+}

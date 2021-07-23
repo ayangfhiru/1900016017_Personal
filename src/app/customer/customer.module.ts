@@ -23,7 +23,7 @@ const routes : Routes = [
         component: JenisTanamanComponent
       },
       {
-        path:'detail-produk',
+        path:'produk',
         component: DetailProdukComponent
       }
     ]

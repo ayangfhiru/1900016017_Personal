@@ -23,16 +23,6 @@ export class TambahDataComponent implements OnInit {
     public storage: AngularFireStorage
   ) {}
 
-  uploadBerhasil: boolean = true;
-  onFileChange(event:any){
-    if(event.target.files.length >= 1){
-      this.selectedFile = event.target.files[0];
-      console.log(this.selectedFile);
-      this.uploadBerhasil = false;
-    }
-    console.log("Nama File "+this.selectedFile.name);
-  }
-
   dataUser:any = {};
   ngOnInit(): void {
     this.auth.authState.subscribe((user) => {
@@ -46,6 +36,16 @@ export class TambahDataComponent implements OnInit {
       total: new FormControl(null, Validators.required)
     });
     console.log(this.selectedFile.name+"OnInit")
+  }
+
+  uploadBerhasil: boolean = true;
+  onFileChange(event:any){
+    if(event.target.files.length >= 1){
+      this.selectedFile = event.target.files[0];
+      console.log(this.selectedFile);
+      this.uploadBerhasil = false;
+    }
+    console.log("Nama File "+this.selectedFile.name);
   }
 
   formImg: boolean = true;

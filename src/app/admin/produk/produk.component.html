@@ -17,6 +17,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">Gambar</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Jenis</th>
                 <th scope="col">Tinggi</th>
@@ -28,14 +29,15 @@
             <tbody>
               <tr *ngFor="let plant of plants; index as row">
                 <th scope="row">{{row + 1}}</th>
-                <td>{{plant.name}}</td>
-                <td>{{plant.jenis}}</td>
-                <td>{{plant.height}}</td>
-                <td>{{plant.price | currency:"Rp "}}</td>
-                <td>{{plant.total}}</td>
-                <td>
-                  <a class="uk-icon-link uk-margin-small-right" (click)="editPlants(plant, plant.id)" title="Edit" uk-icon="file-edit"></a>
-                  <a class="uk-icon-link uk-margin-small-right" (click)="hapusPlants(plant.id)" title="Hapus" uk-icon="trash"></a>
+                <td><img src="{{plant.urlImg}}" alt="{{plant.name}}" class="img-thumbnail img-table"></td>
+                <td><p class="my-auto">{{plant.name}}</p></td>
+                <td><p class="my-auto">{{plant.jenis}}</p></td>
+                <td><p class="my-auto">{{plant.height}}</p></td>
+                <td><p class="my-auto">{{plant.price | currency:"Rp "}}</p></td>
+                <td><p class="my-auto">{{plant.total}}</p></td>
+                <td><p class="my-auto uk-iconnav uk-iconnav-vertical"></p> 
+                  <a class="uk-icon-link uk-margin-small-right uk-iconnav uk-iconnav-vertical" (click)="editPlants(plant, plant.id)" title="Edit" uk-icon="file-edit"></a>
+                  <a class="uk-icon-link uk-margin-small-right uk-iconnav uk-iconnav-vertical mt-2" (click)="hapusPlants(plant.id)" title="Hapus" uk-icon="trash"></a>
                 </td>
               </tr>
             </tbody>

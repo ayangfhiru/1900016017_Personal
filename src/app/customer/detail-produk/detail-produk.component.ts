@@ -8,6 +8,9 @@ import { ApiService } from 'src/app/service/api.service';
   styleUrls: ['./detail-produk.component.scss']
 })
 export class DetailProdukComponent implements OnInit {
+  IdPlants: any;
+  dataPlant:any = {};
+  Id:any;
 
   constructor(
     public api: ApiService,
@@ -16,16 +19,20 @@ export class DetailProdukComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDataPlants();
+    this.Id = localStorage.getItem('idPlants');
+    this.firestore.collection("plants").doc(this.Id).valueChanges().subscribe(result=>{
+      this.dataPlant = result
+    },error=>{
+      console.log("Data Error");
+    })
   }
 
-  idPlants: any;
-  dataPlants: any = {};
   getDataPlants(){
-    this.idPlants = this.api.getIdPlants();
-    
-    this.firestore.collection("plants").doc(this.idPlants).get().subscribe(res=>{
-      this.dataPlants = res;
-    })
+    this.IdPlants = this.api.getPlants();
+    if(this.IdPlants == null){}
+    else{
+      localStorage.setItem('idPlants', this.IdPlants);
+    }    
   }
 
 }

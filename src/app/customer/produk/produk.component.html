@@ -4,8 +4,8 @@
     </div>
     <div class="card-body">
         <div class="card float-left mr-1 my-1 uk-animation-toggle" style="height: 200px; width: 234px;" *ngFor="let pilihan of jenisTnmCard;">
-            <!-- <a (click)="kirimJenis(pilihan['jenis'])" class="card-link" disabled> -->
-            <a class="card-link" disabled>
+            <a (click)="kirimJenis(pilihan['jenis'])" class="card-link" disabled>
+            <!-- <a class="card-link"> -->
                 <div class="card-body uk-animation-scale-up">
                     <h3 class="card-title">{{pilihan['title']}}</h3>
                     <img src="{{pilihan['img']}}" style="height: 120px; width: 100%;">
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-            <button type="button" (click)="cekdata(plant.id, plant)" class="btn btn-info" style="width: 100px;">Info</button>
+            <button type="button" (click)="cekdata(plant['id'])" class="btn btn-info" style="width: 100px;">Info</button>
             <button type="button" class="btn btn-success" style="width: 100px;">Keranjang</button>
         </div>
     </div>

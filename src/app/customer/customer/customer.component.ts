@@ -20,6 +20,9 @@ export class CustomerComponent implements OnInit {
   userData: any = {};
   ngOnInit(): void {
     this.auth.authState.subscribe((res:any)=>{
+      if(res == null){
+        window.location.replace('/');
+      }
       this.firestore.collection("userData").doc(res.email).valueChanges().subscribe(result=>{
         this.userData = result;
       })

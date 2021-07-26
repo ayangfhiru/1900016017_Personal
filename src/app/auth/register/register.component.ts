@@ -19,9 +19,11 @@ export class RegisterComponent implements OnInit {
     public auth: AngularFireAuth,
     public firestore: AngularFirestore,
     public api: ApiService
-  ) { }
+  ) {}
 
+  url: any = window.location.pathname;
   ngOnInit(): void {
+    console.log(this.url);
   }
   
   loading: boolean = false;
@@ -36,26 +38,39 @@ export class RegisterComponent implements OnInit {
           this.message = "Password minimal enam karakter";
         }
         else{
-          this.auth.createUserWithEmailAndPassword(this.user.email, this.user.password).then(result=>{
+          this.auth.createUserWithEmailAndPassword(this.user.email, this.user.password).then((result:any)=>{
             delete this.user.password;
             delete this.user.conpass;
             this.user.kondisi = "0";
 
-            //Firestore
-            this.firestore.collection('userData').doc(this.user.email).set(this.user).then(res=>{
-                this.message = "Berhasil Oke";
-                this.router.navigate(['login']);
-            }).catch(err=>{
-              this.loading = false;
-              this.message = "Registrasi Gagal";
-            });
+            if(this.url == "/admin/register-admin"){
+              this.user.kondisi = "1";
+              this.firestore.collection('userData').doc(this.user.email).set(this.user).then(res=>{
+                  this.message = "Berhasil Oke";
+                  this.router.navigate(['login']);
+              }).catch(err=>{
+                this.loading = false;
+                this.message = "Registrasi Gagal";
+              });
+            }
+            else if(this.url = '/register'){
+              this.firestore.collection('userData').doc(this.user.email).set(this.user).then(res=>{
+                  this.message = "Berhasil Oke";
+                  this.router.navigate(['login']);
+              }).catch(err=>{
+                this.loading = false;
+                this.message = "Registrasi Gagal";
+              });
+            }
+            else{
+              console.log("Error");
+            }   
 
           }).catch(error=>{
+            this.info = false;
             this.loading = false;
-            this.message = "Registrasi Gagal";
+            this.message = error.message;
           });
-
-          
         }
     }
     else{

@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.auth.onAuthStateChanged((user)=>{
       if(user){
         var uid = user.uid;
-        localStorage.setItem("TokenPlant", uid);
+        // localStorage.setItem("TokenPlant", uid);
       }
       else{
         

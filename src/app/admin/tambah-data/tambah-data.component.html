@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="uk-margin">
-                <label class="uk-form-label" for="form-horizontal-text"><p style="margin-left: 50px;">Tinggi</p></label>
+                <label class="uk-form-label" for="form-horizontal-text"><p style="margin-left: 50px;">Tinggi / Cm</p></label>
                 <div class="uk-form-controls" style="margin-right: 50px;">
                     <input class="uk-input" formControlName="height" type="number" min="0" autocomplete="off">
                 </div>
@@ -43,17 +43,19 @@
                         <label class="custom-file-label" for="customFile">{{selectedFile ? selectedFile.name : 'Pilih File'}}</label>
                     </div>
                     <div class="input-group-append">
-                        <button type="button" (click)="uploadImg()" class="btn btn-primary ml-1" [disabled]="uploadBerhasil">Upload</button>
+                        <button type="button" (click)="uploadImg()" class="btn btn-primary ml-1" [disabled]="tambahFile">
+                            {{uploadBerhasil ? "Upload":"Loading..."}}
+                        </button>
                     </div>
                 </div>
             </div>
             
             <div class="float-right">
                 <button type="submit" class="btn btn-success float-right mr-5" style="height: 40px;" [disabled]="!loading" [disabled]="!uploadBerhasil">
-                    <mat-icon>add</mat-icon><p class="float-right">{{loading ? 'Tambah':'Tunggu...'}}</p>
+                    <p class="float-right">{{loadingTxt ? 'Tambah':'Proses...'}}</p>
                 </button>
-                <button class="btn btn-danger float-right mr-5" style="height: 40px; width: 100px;" (click)="cancel()" [disabled]="!loading">
-                    <mat-icon>close</mat-icon><p class="float-right mr-2">{{loading ? 'Batal':'Tunggu...'}}</p>
+                <button class="btn btn-danger float-right mr-5" style="height: 40px;" (click)="cancel()" [disabled]="!loadingCncl">
+                    <p class="float-right">{{loadingCncl ? 'Batal':'Tunggu...'}}</p>
                 </button>
             </div>
 

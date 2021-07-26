@@ -37,10 +37,7 @@ $app-theme: mat-light-theme(
 /* You can add global styles to this file, and also import other style files */
 @import url("./style/Bootstrap4.6/bootstrap.css");
 @import url("./style/Uikit/uikit.css");
-html,
-body {
-  height: 200%;
-}
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;

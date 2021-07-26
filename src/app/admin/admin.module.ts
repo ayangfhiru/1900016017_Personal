@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { TambahDataComponent } from './tambah-data/tambah-data.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditDataComponent } from './edit-data/edit-data.component';
+import { RegisterComponent } from '../auth/register/register.component';
 
 const routes : Routes = [
   {
@@ -29,6 +30,10 @@ const routes : Routes = [
       {
         path:'add_data',
         component: TambahDataComponent
+      },
+      {
+        path:'register-admin',
+        component: RegisterComponent
       }
     ]
   }

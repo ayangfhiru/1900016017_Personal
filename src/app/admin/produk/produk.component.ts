@@ -50,6 +50,10 @@ export class ProdukComponent implements OnInit {
     });
   }
 
+  infoPlants(id:any){
+    alert("Belum Ada")
+  }
+
   hapusPlants(id:any){
     this.firestore.collection('plants').doc(id).delete().then(res=>{
       this.alert = true
@@ -57,7 +61,6 @@ export class ProdukComponent implements OnInit {
     }).catch(err=>{
       alert("Gagal");
     })
-    // console.log(id)
   }
 
 }

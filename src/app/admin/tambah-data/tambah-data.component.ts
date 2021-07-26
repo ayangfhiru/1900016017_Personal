@@ -15,6 +15,8 @@ export class TambahDataComponent implements OnInit {
 
   formAddData: any;
   selectedFile:any = "";
+  loading: boolean = true;
+  loadingTxt: boolean = true;
 
   constructor(
     public api: ApiService,
@@ -39,18 +41,21 @@ export class TambahDataComponent implements OnInit {
   }
 
   uploadBerhasil: boolean = true;
+  tambahFile: boolean = true;
   onFileChange(event:any){
     if(event.target.files.length >= 1){
       this.selectedFile = event.target.files[0];
       console.log(this.selectedFile);
-      this.uploadBerhasil = false;
+      this.tambahFile = false;
+      this.loading = false;
     }
     console.log("Nama File "+this.selectedFile.name);
   }
 
   formImg: boolean = true;
-  urlImages: any;
+  urlImages: any = "https://firebasestorage.googleapis.com/v0/b/plantshop-2dc5b.appspot.com/o/PlantImg%2Fdefault.png?alt=media&token=f91906ce-ba8c-4450-9f0c-764494266c9d";
   uploadImg(){
+    this.uploadBerhasil = false;
     const filePath = "PlantImg/"+this.selectedFile.name;
     const upload = this.storage.upload(filePath, this.selectedFile);
     const storageRef = this.storage.ref(filePath);
@@ -59,23 +64,23 @@ export class TambahDataComponent implements OnInit {
       finalize(()=> {
         storageRef.getDownloadURL().subscribe(url => {
           this.urlImages = url;
+          this.uploadBerhasil = true;
+          this.formImg = false;
+          this.loading = true;
+          this.loadingTxt = true;
         })
       })
     ).subscribe(url => {
       console.log(url);
     })
-
-    if(upload){
-      this.uploadBerhasil = true;
-      this.formImg = false;
-    }
   }
 
   dataplants:any = {};
-  loading: boolean = true;
   tgl = new Date().getTime().toString();
   addData(){
     this.loading = false;
+    this.loadingTxt = false;
+    
     this.dataplants = this.formAddData.value;
     this.dataplants.id = this.tgl;
     this.dataplants.email = this.dataUser.email;
@@ -89,7 +94,9 @@ export class TambahDataComponent implements OnInit {
     })
   }
 
+  loadingCncl: boolean = true;
   cancel(){
+    this.loadingCncl = false;
     this.api.router.navigate(['admin/produk']);
   }
 }

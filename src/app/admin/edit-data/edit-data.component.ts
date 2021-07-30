@@ -13,7 +13,10 @@ import { finalize } from 'rxjs/operators';
 export class EditDataComponent implements OnInit {
 
   selectedFile:any = "";
-  
+  loading: boolean = true;
+  loadingIcon: boolean = true;
+  formImg: boolean = true;
+
   constructor(
     public dialogRef: MatDialogRef<EditDataComponent>,
     @Inject(MAT_DIALOG_DATA) public dataPlants:any,
@@ -37,36 +40,41 @@ export class EditDataComponent implements OnInit {
       this.selectedFile = event.target.files[0];
       console.log(this.selectedFile);
       this.uploadBerhasil = false;
+      this.loading = false;
     }
     console.log("Nama File "+this.selectedFile.name);
   }
 
-  formImg: boolean = true;
-  urlImages: any;
+  bar: any = 5;
+  progesBar: boolean = false;
   uploadImg(){
+    this.uploadBerhasil = true;
+    this.formImg = false;
+    this.progesBar = true;
+
     const filePath = "PlantImg/"+this.selectedFile.name;
     const upload = this.storage.upload(filePath, this.selectedFile);
     const storageRef = this.storage.ref(filePath);
 
+    var uploadTask = storageRef.put(this.selectedFile);
+
     upload.snapshotChanges().pipe(
       finalize(()=> {
+        this.bar = (upload.task.snapshot.bytesTransferred / upload.task.snapshot.totalBytes) * 100;
         storageRef.getDownloadURL().subscribe(url => {
-          this.urlImages = url;
+          this.dataPlants.urlImg = url;
+          this.loading = true;
+          this.uploadBerhasil = true;
+          this.formImg = false;
         })
       })
     ).subscribe(url => {
       console.log(url);
     })
 
-    if(upload){
-      this.uploadBerhasil = true;
-      this.formImg = false;
-    }
   }
 
-  loading: boolean = true;
   editPlants(){
-    // console.log("Edit data " + this.dataPlants)
     this.loading = false;
     this.firestore.collection('plants').doc(this.dataPlants.id).update(this.dataPlants).then(res=>{
       this.loading = false

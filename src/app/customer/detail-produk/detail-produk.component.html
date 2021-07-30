@@ -7,12 +7,6 @@
                 <li>
                     <img data-src="{{dataPlant.urlImg}}" width="1800" height="1200" alt="" uk-cover uk-img="target: !ul > :last-child, !* +*">
                 </li>
-                <li>
-                    <img data-src="{{dataPlant.urlImg}}" width="1800" height="1200" alt="" uk-cover uk-img="target: !* -*, !* +*">
-                </li>
-                <li>
-                    <img data-src="{{dataPlant.urlImg}}" width="1800" height="1200" alt="" uk-cover uk-img="target: !* -*, !ul > :first-child">
-                </li>
             </ul>
         
             <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
@@ -22,7 +16,16 @@
       </div>
       <div class="col-4">
           <p class="uk-text-lead">{{dataPlant.name}}</p>
-          <p class="uk-text-bold">{{dataPlant.price | currency:"Rp "}}</p>
+          <p class="font-italic">Tinggi {{dataPlant.height}} Cm</p>
+          <p class="uk-text-bold">Harga {{dataPlant.price | currency:"Rp "}}</p>
+
+          <hr>
+          <p class="font-italic mt-3">Deskripsi</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, adipisci quae? Molestiae obcaecati facere eveniet voluptatibus repellat veritatis similique! Repellendus impedit, assumenda est enim quo blanditiis quasi ab tenetur adipisci.</p>
+      </div>
+      <div class="uk-position-small uk-position-bottom-right uk-overlay" style="margin-bottom: 150px; margin-right: 220px;">
+        <button type="button" (click)="keranjang()" class="btn btn-primary">Keranjang</button>
+        <button type="button" (click)="kembali()" class="btn btn-danger ml-3">Kembali</button>
       </div>
     </div>
   </div>

@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.info = true;
     this.auth.signInWithEmailAndPassword(this.user.email, this.user.password).then(result=>{
-      console.log(this.auth.currentUser)
+      // console.log(this.auth.currentUser)
       this.loading = true;
 
       if (result) {

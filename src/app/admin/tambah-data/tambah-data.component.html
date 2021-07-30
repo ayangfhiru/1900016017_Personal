@@ -48,6 +48,9 @@
                         </button>
                     </div>
                 </div>
+                <div class="progress" *ngIf="progesBar">
+                    <div class="progress-bar progress-bar-striped {{animate}}" role="progressbar" attr.aria-valuenow="{{bar}}" aria-valuemin="0" aria-valuemax="100" attr.style="width: {{bar}}%"></div>
+                </div>
             </div>
             
             <div class="float-right">

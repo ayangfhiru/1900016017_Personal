@@ -11,6 +11,7 @@ import { TambahDataComponent } from './tambah-data/tambah-data.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditDataComponent } from './edit-data/edit-data.component';
 import { RegisterComponent } from '../auth/register/register.component';
+import { KonfirmasiComponent } from './konfirmasi/konfirmasi.component';
 
 const routes : Routes = [
   {
@@ -45,7 +46,8 @@ const routes : Routes = [
     AdminComponent,
     HomeComponent,
     TambahDataComponent,
-    EditDataComponent
+    EditDataComponent,
+    KonfirmasiComponent
   ],
   imports: [
     RouterModule.forChild(routes),

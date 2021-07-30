@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class DetailProdukComponent implements OnInit {
 
   constructor(
     public api: ApiService,
-    public firestore: AngularFirestore
+    public firestore: AngularFirestore,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +35,14 @@ export class DetailProdukComponent implements OnInit {
     else{
       localStorage.setItem('idPlants', this.IdPlants);
     }    
+  }
+
+  keranjang(){
+    alert("Belum Bisa");
+  }
+
+  kembali(){
+    this.router.navigate(['customer']);
   }
 
 }

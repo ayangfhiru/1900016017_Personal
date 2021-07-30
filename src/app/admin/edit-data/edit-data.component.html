@@ -46,11 +46,14 @@
                 <div class="input-group-append btn-upload-img">
                     <button type="button" (click)="uploadImg()" class="btn btn-primary" [disabled]="uploadBerhasil">Upload</button>
                 </div>
+                <div class="progress" *ngIf="progesBar">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" attr.aria-valuenow="{{bar}}" aria-valuemin="0" aria-valuemax="100" attr.style="width: {{bar}}%"></div>
+                </div>
             </div>
 
             <div class="float-right">
                 <button (click)="editPlants()" class="btn btn-success mt-5 mr-5" [disabled]="!loading">
-                    <mat-icon class="mt-1">{{loading ? 'save':'published_with_changes'}}</mat-icon>
+                    <mat-icon class="mt-1">{{loadingIcon ? 'save':'published_with_changes'}}</mat-icon>
                 </button>
             </div>
 

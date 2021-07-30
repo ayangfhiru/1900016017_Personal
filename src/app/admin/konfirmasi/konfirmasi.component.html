@@ -1,0 +1,6 @@
+<h1 md-dialog-title class="text-center">Yakin menghapus <b>{{dataPlants.name}}</b></h1>
+<!-- <div md-dialog-content>{{dataPlants.name}}</div> -->
+<div md-dialog-actions>
+    <button type="button" class="btn btn-danger" style="margin-left: 120px;" (click)="dialogRef.close(false)">Cancel</button>
+    <button type="button" class="btn btn-primary float-right" style="margin-right: 120px;" (click)="confirm()">Confirm</button>
+</div>

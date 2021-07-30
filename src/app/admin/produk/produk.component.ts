@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/service/api.service';
 import { EditDataComponent } from '../edit-data/edit-data.component';
+import { KonfirmasiComponent } from '../konfirmasi/konfirmasi.component';
 
 @Component({
   selector: 'app-produk',
@@ -11,6 +12,7 @@ import { EditDataComponent } from '../edit-data/edit-data.component';
   styleUrls: ['./produk.component.scss']
 })
 export class ProdukComponent implements OnInit {
+
   constructor(
     public api: ApiService,
     public auth: AngularFireAuth,
@@ -55,11 +57,9 @@ export class ProdukComponent implements OnInit {
   }
 
   hapusPlants(id:any){
-    this.firestore.collection('plants').doc(id).delete().then(res=>{
-      this.alert = true
-      this.messageAlert = "Berhasil Menghapus Plants dengan Id "+id
-    }).catch(err=>{
-      alert("Gagal");
+    const dialogRef = this.dialog.open(KonfirmasiComponent,{
+      width: '550px',
+      data: id
     })
   }
 

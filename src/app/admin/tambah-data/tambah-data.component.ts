@@ -5,6 +5,7 @@ import { AngularFireStorage } from "@angular/fire/storage";
 import { finalize } from 'rxjs/operators';
 import { ApiService } from 'src/app/service/api.service';
 import {FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tambah-data',
@@ -22,7 +23,8 @@ export class TambahDataComponent implements OnInit {
     public api: ApiService,
     public firestore: AngularFirestore,
     public auth: AngularFireAuth,
-    public storage: AngularFireStorage
+    public storage: AngularFireStorage,
+    public router: Router
   ) {}
 
   dataUser:any = {};
@@ -37,7 +39,7 @@ export class TambahDataComponent implements OnInit {
       jenis: new FormControl(null, Validators.required),
       total: new FormControl(null, Validators.required)
     });
-    console.log(this.selectedFile.name+"OnInit")
+    // console.log(this.selectedFile.name+"OnInit")
   }
 
   uploadBerhasil: boolean = true;
@@ -54,14 +56,21 @@ export class TambahDataComponent implements OnInit {
 
   formImg: boolean = true;
   urlImages: any = "https://firebasestorage.googleapis.com/v0/b/plantshop-2dc5b.appspot.com/o/PlantImg%2Fdefault.png?alt=media&token=f91906ce-ba8c-4450-9f0c-764494266c9d";
+  progesBar: boolean = false;
+  bar: any = 5;
+  animate: any = "";
   uploadImg(){
     this.uploadBerhasil = false;
+    this.progesBar = true;
+    this.tambahFile = true;
+    this.animate = "progress-bar-animated";
     const filePath = "PlantImg/"+this.selectedFile.name;
     const upload = this.storage.upload(filePath, this.selectedFile);
     const storageRef = this.storage.ref(filePath);
 
     upload.snapshotChanges().pipe(
       finalize(()=> {
+        this.bar = (upload.task.snapshot.bytesTransferred / upload.task.snapshot.totalBytes) * 100;
         storageRef.getDownloadURL().subscribe(url => {
           this.urlImages = url;
           this.uploadBerhasil = true;
@@ -69,7 +78,12 @@ export class TambahDataComponent implements OnInit {
           this.loading = true;
           this.loadingTxt = true;
         })
+        if(this.bar == 100){
+          this.animate = "";
+          this.progesBar = false;
+        }
       })
+      
     ).subscribe(url => {
       console.log(url);
     })
@@ -88,7 +102,7 @@ export class TambahDataComponent implements OnInit {
 
     this.firestore.collection('plants').doc(this.tgl).set(this.dataplants).then(res => {
       this.loading = true;
-      this.api.router.navigate(['admin/produk']);     
+      this.router.navigate(['admin/produk']);     
     }).catch(err => {
       alert("Gagal menambahkan data");
     })
@@ -97,6 +111,6 @@ export class TambahDataComponent implements OnInit {
   loadingCncl: boolean = true;
   cancel(){
     this.loadingCncl = false;
-    this.api.router.navigate(['admin/produk']);
+    this.router.navigate(['admin/produk']);
   }
 }

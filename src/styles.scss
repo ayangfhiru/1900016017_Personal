@@ -38,6 +38,10 @@ $app-theme: mat-light-theme(
 @import url("./style/Bootstrap4.6/bootstrap.css");
 @import url("./style/Uikit/uikit.css");
 
+html,
+body {
+  height: 200%;
+}
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;

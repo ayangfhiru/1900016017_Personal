@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     public api: ApiService
   ) {}
 
-  url: any = window.location.pathname;
+  url: any = window.location.pathname.split('/').pop();
   ngOnInit(): void {
     console.log(this.url);
   }
@@ -43,11 +43,11 @@ export class RegisterComponent implements OnInit {
             delete this.user.conpass;
             this.user.kondisi = "0";
 
-            if(this.url == "/admin/register-admin"){
+            if(this.url == "register-admin"){
               this.user.kondisi = "1";
               this.firestore.collection('userData').doc(this.user.email).set(this.user).then(res=>{
                   this.message = "Berhasil Oke";
-                  this.router.navigate(['login']);
+                  this.router.navigate(['/']);
               }).catch(err=>{
                 this.loading = false;
                 this.message = "Registrasi Gagal";
@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
             else if(this.url = '/register'){
               this.firestore.collection('userData').doc(this.user.email).set(this.user).then(res=>{
                   this.message = "Berhasil Oke";
-                  this.router.navigate(['login']);
+                  this.router.navigate(['/']);
               }).catch(err=>{
                 this.loading = false;
                 this.message = "Registrasi Gagal";

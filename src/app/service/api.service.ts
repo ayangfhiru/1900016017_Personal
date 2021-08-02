@@ -41,7 +41,8 @@ export class ApiService {
   signOut(){
     return this.auth.signOut().then(res =>{
       localStorage.removeItem("TokenPlant");
-      this.router.navigate(['login']);
+      this.router.navigate(['/']);
+      location.reload();
     })
   }
 
